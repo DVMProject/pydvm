@@ -1,7 +1,7 @@
 API
 ===
 
-.. automodule:: pythontemplate
+.. automodule:: pydvm
    :members:
    :undoc-members:
    :show-inheritance:
