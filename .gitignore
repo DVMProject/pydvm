@@ -1,29 +1,3 @@
-##---------------------------------------------------
-# Automated documentation .gitignore files
-##---------------------------------------------------
-
-# Automatically generated API documentation stubs from sphinx-apidoc
-docs/source/packages
-
-# Automatically converting README from markdown to rST
-docs/bin
-docs/source/readme.rst
-docs/source/assets
-
-
-##---------------------------------------------------
-# Continuous Integration .gitignore files
-##---------------------------------------------------
-
-# Ignore test result XML files
-testresults.xml
-coverage.xml
-
-
-##---------------------------------------------------
-# Python default .gitignore
-##---------------------------------------------------
-
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
@@ -31,7 +5,6 @@ __pycache__/
 
 # C extensions
 *.so
-*.pyd
 
 # Distribution / packaging
 .Python
@@ -47,7 +20,6 @@ parts/
 sdist/
 var/
 wheels/
-pip-wheel-metadata/
 share/python-wheels/
 *.egg-info/
 .installed.cfg
@@ -74,8 +46,10 @@ htmlcov/
 nosetests.xml
 coverage.xml
 *.cover
+*.py,cover
 .hypothesis/
 .pytest_cache/
+cover/
 
 # Translations
 *.mo
@@ -85,6 +59,7 @@ coverage.xml
 *.log
 local_settings.py
 db.sqlite3
+db.sqlite3-journal
 
 # Flask stuff:
 instance/
@@ -94,18 +69,11 @@ instance/
 .scrapy
 
 # Sphinx documentation
-/docs/_build/
-/docs/build/
+docs/_build/
 
 # PyBuilder
+.pybuilder/
 target/
-
-# Pycharm
-/.idea/dictionaries
-/.idea/modules.xml
-/.idea/shelf
-/.idea/usage.statistics.xml
-/.idea/workspace.xml
 
 # Jupyter Notebook
 .ipynb_checkpoints
@@ -115,17 +83,46 @@ profile_default/
 ipython_config.py
 
 # pyenv
-.python-version
+#   For a library or package, you might want to ignore these files since the code is
+#   intended to run in multiple environments; otherwise, check them in:
+# .python-version
 
 # pipenv
 #   According to pypa/pipenv#598, it is recommended to include Pipfile.lock in version control.
 #   However, in case of collaboration, if having platform-specific dependencies or dependencies
-#   having no cross-platform support, pipenv may install dependencies that don’t work, or not
+#   having no cross-platform support, pipenv may install dependencies that don't work, or not
 #   install all needed dependencies.
 #Pipfile.lock
 
-# celery beat schedule file
+# UV
+#   Similar to Pipfile.lock, it is generally recommended to include uv.lock in version control.
+#   This is especially recommended for binary packages to ensure reproducibility, and is more
+#   commonly ignored for libraries.
+#uv.lock
+
+# poetry
+#   Similar to Pipfile.lock, it is generally recommended to include poetry.lock in version control.
+#   This is especially recommended for binary packages to ensure reproducibility, and is more
+#   commonly ignored for libraries.
+#   https://python-poetry.org/docs/basic-usage/#commit-your-poetrylock-file-to-version-control
+#poetry.lock
+
+# pdm
+#   Similar to Pipfile.lock, it is generally recommended to include pdm.lock in version control.
+#pdm.lock
+#   pdm stores project-wide configurations in .pdm.toml, but it is recommended to not include it
+#   in version control.
+#   https://pdm.fming.dev/latest/usage/project/#working-with-version-control
+.pdm.toml
+.pdm-python
+.pdm-build/
+
+# PEP 582; used by e.g. github.com/David-OConnor/pyflow and github.com/pdm-project/pdm
+__pypackages__/
+
+# Celery stuff
 celerybeat-schedule
+celerybeat.pid
 
 # SageMath parsed files
 *.sage.py
@@ -160,90 +157,20 @@ dmypy.json
 # pytype static type analyzer
 .pytype/
 
+# Cython debug symbols
+cython_debug/
 
-##---------------------------------------------------
-# Windows default .gitignore
-##---------------------------------------------------
+# PyCharm
+#  JetBrains specific template is maintained in a separate JetBrains.gitignore that can
+#  be found at https://github.com/github/gitignore/blob/main/Global/JetBrains.gitignore
+#  and can be added to the global gitignore or merged into this file.  For a more nuclear
+#  option (not recommended) you can uncomment the following to ignore the entire idea folder.
+#.idea/
 
-# Windows thumbnail cache files
-Thumbs.db
-ehthumbs.db
-ehthumbs_vista.db
+# Ruff stuff:
+.ruff_cache/
 
-# Dump file
-*.stackdump
+# PyPI configuration file
+.pypirc
 
-# Folder config file
-[Dd]esktop.ini
-
-# Recycle Bin used on file shares
-$RECYCLE.BIN/
-
-# Windows Installer files
-*.cab
-*.msi
-*.msix
-*.msm
-*.msp
-
-# Windows shortcuts
-*.lnk
-
-
-##---------------------------------------------------
-# Linux default .gitignore
-##---------------------------------------------------
-
-# Editor backup files
-*~
-
-# temporary files which can be created if a process still has a handle open of a deleted file
-.fuse_hidden*
-
-# KDE directory preferences
-.directory
-
-# Linux trash folder which might appear on any partition or disk
-.Trash-*
-
-# .nfs files are created when an open file is removed but is still being accessed
-.nfs*
-
-
-##---------------------------------------------------
-# Mac OSX default .gitignore
-##---------------------------------------------------
-
-# General
-.DS_Store
-.AppleDouble
-.LSOverride
-
-# Icon must end with two \r
-Icon
-
-# Thumbnails
-._*
-
-# Files that might appear in the root of a volume
-.DocumentRevisions-V100
-.fseventsd
-.Spotlight-V100
-.TemporaryItems
-.Trashes
-.VolumeIcon.icns
-.com.apple.timemachine.donotpresent
-
-# Directories potentially created on remote AFP share
-.AppleDB
-.AppleDesktop
-Network Trash Folder
-Temporary Items
-.apdisk
-
-# Cython
-pydvm/_c_extension.c
-pydvm/*.html
-
-# Poetry
-poetry.toml
+# Venv stuff

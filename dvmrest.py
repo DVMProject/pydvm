@@ -6,7 +6,15 @@ import time
 
 class DVMRest:
 
-    def __init__(self, _host, _port, _password):
+    def __init__(self, _host: str, _port: int, _password: str):
+        """
+        Create a new DVMRest API connection
+
+        Args:
+            _host (string): REST endpoint hostname/IP
+            _port (int): REST endpoint port
+            _password (string): REST authentication password
+        """
         # Store connection details
         self.host = _host
         self.port = _port
@@ -84,7 +92,7 @@ class DVMRest:
         Perform a REST GET to the specified path and return the result
 
         Args:
-            path (str): REST path
+            path (str): REST path to query
 
         Returns:
             dict: dictionary of returned data
@@ -128,7 +136,7 @@ class DVMRest:
                 raise PermissionError("Failed to authenticate with REST endpoint!")
             else:
                 return self.get(path)
-        # If we got any other error, return false
+        # If we got any other error, throw it
         elif resultObj["status"] != 200:
             logging.error("Got status %d for REST path %s: %s" % (resultObj["status"], path, resultObj["message"]))
             raise requests.HTTPError("Got status %d for REST path %s: %s" % (resultObj["status"], path, resultObj["message"]))
