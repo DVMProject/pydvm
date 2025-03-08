@@ -9,7 +9,7 @@ Python libraries for interacting with DVMProject applications
 ### Usage
 
 ```python
-from .dvmrest import DVMRest
+from .pydvm.dvmrest import DVMRest
 
 # Create a new DVMRest connection
 dvm_rest = DVMRest('127.0.0.1', 9990, 'PASSWORD)
